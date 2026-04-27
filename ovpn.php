@@ -262,33 +262,19 @@ function resolveIpsDoH(array $hosts): array
  */
 function resolveIpsNative(array $hosts): array
 {
-    if (function_exists('curl_multi_init')) {
-        return resolveIpsDoHProvider($hosts, 'https://dns.google/resolve');
-    }
 
     // Last-resort sequential fallback (no curl_multi available).
     $ips               = [];
-    $consecutiveMisses = 0;
-
     foreach ($hosts as $host) {
-        status("Resolving (native): $host");
-        $resolved = gethostbynamel($host);
-
-        if ($resolved === false || empty($resolved)) {
-            if (++$consecutiveMisses >= MAX_CONSECUTIVE_MISSES) {
-                break;
-            }
-            continue;
+        exec("dig +short $host", $output, $exitCode);
+        if ($exitCode !== 0) {
+            throw new RuntimeException("dig command failed with exit code $exitCode");
         }
-
-        $consecutiveMisses = 0;
-        foreach ($resolved as $ip) {
-            if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) && !in_array($ip, $ips, true)) {
-                $ips[] = $ip;
-            }
-        }
+        echo ".";
+        $ips = array_values(array_filter($ips));
     }
 
+    echo "\n";
     return $ips;
 }
 
