@@ -211,11 +211,19 @@ function ipToPoolDns(string $ip): string
 function resolveIps(string $slug): array
 {
     $output = [];
-    exec("bash -c \"dig +short vpn{0..1000}.prd.{$slug}.ovpn.com\"", $output, $exitCode);
-    if ($exitCode !== 0) {
-        throw new RuntimeException("dig command failed with exit code $exitCode");
+
+    for ($i = 1; $i <= 1000; $i++) {
+        $host = sprintf("vpn%02d.prd.%s.ovpn.com", $i, $slug);
+        $cmd = "dig +short $host";
+        status($cmd);
+        exec($cmd, $output, $exitCode);
+        if ($exitCode !== 0) {
+            throw new RuntimeException("dig command failed with exit code $exitCode");
+        }
+        $output = array_values(array_filter($output));
     }
-    return array_values(array_filter($output));
+
+    return $output;
 }
 
 function writeOutput(string $json, ?string $outputFile): void
@@ -279,13 +287,9 @@ if ($opts['dig']) {
         status("Resolving: {$entry['city']}, {$entry['country']} (slug: {$slug})");
         $ips  = resolveIps($slug);
 
-        if (empty($ips)) {
-            status("  {$slug}: no A records found");
-        } else {
-            status($entry['country'] . ", " . $entry['city'] . ": " . count($ips) . " IP(s) found");
-            $entry['ips'] = $ips;
-            $entry['dns'] = array_map('ipToPoolDns', $ips);
-        }
+        status($entry['country'] . ", " . $entry['city'] . ": " . count($ips) . " IP(s) found");
+        $entry['ips'] = $ips;
+        $entry['dns'] = array_map('ipToPoolDns', $ips);
     }
     unset($entry);
 }
