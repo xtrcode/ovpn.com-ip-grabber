@@ -1,0 +1,448 @@
+[
+    {
+        "city": "Amsterdam",
+        "country": "Netherlands",
+        "iso": "NL",
+        "slug": "amsterdam",
+        "ips": [
+            "185.157.162.6",
+            "185.157.162.7",
+            "185.157.162.8",
+            "185.157.162.9",
+            "185.157.162.10"
+        ],
+        "dns": [
+            "185-157-162-6.pool.ovpn.com",
+            "185-157-162-7.pool.ovpn.com",
+            "185-157-162-8.pool.ovpn.com",
+            "185-157-162-9.pool.ovpn.com",
+            "185-157-162-10.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Atlanta",
+        "country": "United States",
+        "iso": "US",
+        "slug": "atlanta",
+        "ips": [
+            "45.134.140.67"
+        ],
+        "dns": [
+            "45-134-140-67.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Bucharest",
+        "country": "Romania",
+        "iso": "RO",
+        "slug": "bucharest",
+        "ips": [
+            "37.120.206.163"
+        ],
+        "dns": [
+            "37-120-206-163.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Chicago",
+        "country": "United States",
+        "iso": "US",
+        "slug": "chicago",
+        "ips": [
+            "87.249.134.67"
+        ],
+        "dns": [
+            "87-249-134-67.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Copenhagen",
+        "country": "Denmark",
+        "iso": "DK",
+        "slug": "copenhagen",
+        "ips": [
+            "185.236.203.98"
+        ],
+        "dns": [
+            "185-236-203-98.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Dallas",
+        "country": "United States",
+        "iso": "US",
+        "slug": "dallas",
+        "ips": [
+            "194.37.97.35"
+        ],
+        "dns": [
+            "194-37-97-35.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Denver",
+        "country": "United States",
+        "iso": "US",
+        "slug": "denver",
+        "ips": [
+            "169.150.231.243"
+        ],
+        "dns": [
+            "169-150-231-243.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Erfurt",
+        "country": "Germany",
+        "iso": "DE",
+        "slug": "erfurt",
+        "ips": [
+            "84.19.175.164",
+            "217.114.215.130"
+        ],
+        "dns": [
+            "84-19-175-164.pool.ovpn.com",
+            "217-114-215-130.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Frankfurt",
+        "country": "Germany",
+        "iso": "DE",
+        "slug": "frankfurt",
+        "ips": [
+            "45.141.152.69",
+            "45.141.152.68"
+        ],
+        "dns": [
+            "45-141-152-69.pool.ovpn.com",
+            "45-141-152-68.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Gothenburg",
+        "country": "Sweden",
+        "iso": "SE",
+        "slug": "gothenburg",
+        "ips": [
+            "193.187.91.195",
+            "193.187.91.196",
+            "193.187.91.197",
+            "193.187.91.198",
+            "193.187.91.199",
+            "193.187.91.200",
+            "193.187.91.201",
+            "193.187.91.202",
+            "193.187.91.203",
+            "193.187.91.204",
+            "193.187.91.205",
+            "193.187.91.206"
+        ],
+        "dns": [
+            "193-187-91-195.pool.ovpn.com",
+            "193-187-91-196.pool.ovpn.com",
+            "193-187-91-197.pool.ovpn.com",
+            "193-187-91-198.pool.ovpn.com",
+            "193-187-91-199.pool.ovpn.com",
+            "193-187-91-200.pool.ovpn.com",
+            "193-187-91-201.pool.ovpn.com",
+            "193-187-91-202.pool.ovpn.com",
+            "193-187-91-203.pool.ovpn.com",
+            "193-187-91-204.pool.ovpn.com",
+            "193-187-91-205.pool.ovpn.com",
+            "193-187-91-206.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Helsinki",
+        "country": "Finland",
+        "iso": "FI",
+        "slug": "helsinki",
+        "ips": [
+            "46.246.34.51"
+        ],
+        "dns": [
+            "46-246-34-51.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Kyiv",
+        "country": "Ukraine",
+        "iso": "UA",
+        "slug": "kyiv",
+        "ips": [
+            "143.244.46.147"
+        ],
+        "dns": [
+            "143-244-46-147.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "London",
+        "country": "United Kingdom",
+        "iso": "UK",
+        "slug": "london",
+        "ips": [
+            "89.238.176.3"
+        ],
+        "dns": [
+            "89-238-176-3.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Los Angeles",
+        "country": "United States",
+        "iso": "US",
+        "slug": "losangeles",
+        "ips": [
+            "45.83.89.131"
+        ],
+        "dns": [
+            "45-83-89-131.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Madrid",
+        "country": "Spain",
+        "iso": "ES",
+        "slug": "madrid",
+        "ips": [
+            "192.145.124.3"
+        ],
+        "dns": [
+            "192-145-124-3.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Malmö",
+        "country": "Sweden",
+        "iso": "SE",
+        "slug": "malmo",
+        "ips": [
+            "185.157.163.7",
+            "185.157.163.8",
+            "185.157.163.9",
+            "185.157.163.10",
+            "185.157.163.11",
+            "185.157.163.12",
+            "185.157.163.13",
+            "185.157.163.14",
+            "185.157.163.15",
+            "185.157.163.16",
+            "185.157.163.17"
+        ],
+        "dns": [
+            "185-157-163-7.pool.ovpn.com",
+            "185-157-163-8.pool.ovpn.com",
+            "185-157-163-9.pool.ovpn.com",
+            "185-157-163-10.pool.ovpn.com",
+            "185-157-163-11.pool.ovpn.com",
+            "185-157-163-12.pool.ovpn.com",
+            "185-157-163-13.pool.ovpn.com",
+            "185-157-163-14.pool.ovpn.com",
+            "185-157-163-15.pool.ovpn.com",
+            "185-157-163-16.pool.ovpn.com",
+            "185-157-163-17.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Miami",
+        "country": "United States",
+        "iso": "US",
+        "slug": "miami",
+        "ips": [
+            "45.134.142.3"
+        ],
+        "dns": [
+            "45-134-142-3.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Milan",
+        "country": "Italy",
+        "iso": "IT",
+        "slug": "milan",
+        "ips": [
+            "94.198.96.163"
+        ],
+        "dns": [
+            "94-198-96-163.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "New York",
+        "country": "United States",
+        "iso": "US",
+        "slug": "newyork",
+        "ips": [
+            "5.181.234.131",
+            "37.120.138.194"
+        ],
+        "dns": [
+            "5-181-234-131.pool.ovpn.com",
+            "37-120-138-194.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Offenbach",
+        "country": "Germany",
+        "iso": "DE",
+        "slug": "offenbach",
+        "ips": [
+            "138.199.38.131",
+            "138.199.38.149"
+        ],
+        "dns": [
+            "138-199-38-131.pool.ovpn.com",
+            "138-199-38-149.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Oslo",
+        "country": "Norway",
+        "iso": "NO",
+        "slug": "oslo",
+        "ips": [
+            "45.148.18.35",
+            "45.148.18.36",
+            "45.148.18.37"
+        ],
+        "dns": [
+            "45-148-18-35.pool.ovpn.com",
+            "45-148-18-36.pool.ovpn.com",
+            "45-148-18-37.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Paris",
+        "country": "France",
+        "iso": "FX",
+        "slug": "paris",
+        "ips": [
+            "139.28.219.35"
+        ],
+        "dns": [
+            "139-28-219-35.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Seattle",
+        "country": "United States",
+        "iso": "US",
+        "slug": "seattle",
+        "ips": [
+            "156.146.51.227"
+        ],
+        "dns": [
+            "156-146-51-227.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Singapore",
+        "country": "Singapore",
+        "iso": "SG",
+        "slug": "singapore",
+        "ips": [
+            "37.120.208.35"
+        ],
+        "dns": [
+            "37-120-208-35.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Stockholm",
+        "country": "Sweden",
+        "iso": "SE",
+        "slug": "stockholm"
+    },
+    {
+        "city": "Sundsvall",
+        "country": "Sweden",
+        "iso": "SE",
+        "slug": "sundsvall",
+        "ips": [
+            "45.148.17.36",
+            "45.148.17.37",
+            "45.148.17.38",
+            "45.148.17.39"
+        ],
+        "dns": [
+            "45-148-17-36.pool.ovpn.com",
+            "45-148-17-37.pool.ovpn.com",
+            "45-148-17-38.pool.ovpn.com",
+            "45-148-17-39.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Sydney",
+        "country": "Australia",
+        "iso": "AU",
+        "slug": "sydney",
+        "ips": [
+            "217.138.204.35"
+        ],
+        "dns": [
+            "217-138-204-35.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Tokyo",
+        "country": "Japan",
+        "iso": "JP",
+        "slug": "tokyo",
+        "ips": [
+            "217.138.212.51"
+        ],
+        "dns": [
+            "217-138-212-51.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Toronto",
+        "country": "Canada",
+        "iso": "CA",
+        "slug": "toronto",
+        "ips": [
+            "104.245.145.244"
+        ],
+        "dns": [
+            "104-245-145-244.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Vienna",
+        "country": "Austria",
+        "iso": "AT",
+        "slug": "vienna",
+        "ips": [
+            "37.120.212.227"
+        ],
+        "dns": [
+            "37-120-212-227.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Warsaw",
+        "country": "Poland",
+        "iso": "PL",
+        "slug": "warsaw",
+        "ips": [
+            "138.199.59.3"
+        ],
+        "dns": [
+            "138-199-59-3.pool.ovpn.com"
+        ]
+    },
+    {
+        "city": "Zurich",
+        "country": "Switzerland",
+        "iso": "CH",
+        "slug": "zurich",
+        "ips": [
+            "152.89.162.4"
+        ],
+        "dns": [
+            "152-89-162-4.pool.ovpn.com"
+        ]
+    }
+]
