@@ -4,6 +4,59 @@
         "country": "Netherlands",
         "iso": "NL",
         "slug": "amsterdam",
+        "api_slug": "amsterdam",
+        "servers": [
+            {
+                "name": "VPN28",
+                "ip": "185.157.162.6",
+                "pool_dns": "185-157-162-6.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 249,
+                "bandwidth_usage": 25,
+                "port_speed_mbit": 1000
+            },
+            {
+                "name": "VPN29",
+                "ip": "185.157.162.7",
+                "pool_dns": "185-157-162-7.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 155,
+                "bandwidth_usage": 16,
+                "port_speed_mbit": 1000
+            },
+            {
+                "name": "VPN30",
+                "ip": "185.157.162.8",
+                "pool_dns": "185-157-162-8.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 339,
+                "bandwidth_usage": 34,
+                "port_speed_mbit": 1000
+            },
+            {
+                "name": "VPN35",
+                "ip": "185.157.162.9",
+                "pool_dns": "185-157-162-9.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 229,
+                "bandwidth_usage": 23,
+                "port_speed_mbit": 1000
+            },
+            {
+                "name": "VPN36",
+                "ip": "185.157.162.10",
+                "pool_dns": "185-157-162-10.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 209,
+                "bandwidth_usage": 21,
+                "port_speed_mbit": 1000
+            }
+        ],
         "ips": [
             "185.157.162.6",
             "185.157.162.7",
@@ -24,6 +77,19 @@
         "country": "United States",
         "iso": "US",
         "slug": "atlanta",
+        "api_slug": "atlanta",
+        "servers": [
+            {
+                "name": "VPN18",
+                "ip": "45.134.140.67",
+                "pool_dns": "45-134-140-67.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 939,
+                "bandwidth_usage": 31,
+                "port_speed_mbit": 3000
+            }
+        ],
         "ips": [
             "45.134.140.67"
         ],
@@ -36,6 +102,19 @@
         "country": "Romania",
         "iso": "RO",
         "slug": "bucharest",
+        "api_slug": "bucharest",
+        "servers": [
+            {
+                "name": "VPN45",
+                "ip": "37.120.206.163",
+                "pool_dns": "37-120-206-163.pool.ovpn.com",
+                "online": true,
+                "uptime": "8 hours",
+                "bandwidth_mbit": 74,
+                "bandwidth_usage": 7,
+                "port_speed_mbit": 1000
+            }
+        ],
         "ips": [
             "37.120.206.163"
         ],
@@ -48,6 +127,19 @@
         "country": "United States",
         "iso": "US",
         "slug": "chicago",
+        "api_slug": "chicago",
+        "servers": [
+            {
+                "name": "VPN32",
+                "ip": "87.249.134.67",
+                "pool_dns": "87-249-134-67.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 432,
+                "bandwidth_usage": 14,
+                "port_speed_mbit": 3000
+            }
+        ],
         "ips": [
             "87.249.134.67"
         ],
@@ -60,6 +152,19 @@
         "country": "Denmark",
         "iso": "DK",
         "slug": "copenhagen",
+        "api_slug": "copenhagen",
+        "servers": [
+            {
+                "name": "VPN27",
+                "ip": "185.236.203.98",
+                "pool_dns": "185-236-203-98.pool.ovpn.com",
+                "online": true,
+                "uptime": "8 hours",
+                "bandwidth_mbit": 880,
+                "bandwidth_usage": 29,
+                "port_speed_mbit": 3000
+            }
+        ],
         "ips": [
             "185.236.203.98"
         ],
@@ -72,6 +177,19 @@
         "country": "United States",
         "iso": "US",
         "slug": "dallas",
+        "api_slug": "dallas",
+        "servers": [
+            {
+                "name": "VPN33",
+                "ip": "194.37.97.35",
+                "pool_dns": "194-37-97-35.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 100,
+                "bandwidth_usage": 3,
+                "port_speed_mbit": 3000
+            }
+        ],
         "ips": [
             "194.37.97.35"
         ],
@@ -84,30 +202,228 @@
         "country": "United States",
         "iso": "US",
         "slug": "denver",
-        "ips": [],
-        "dns": []
+        "api_slug": "denver",
+        "servers": [
+            {
+                "name": "VPN103",
+                "ip": "169.150.231.243",
+                "pool_dns": "169-150-231-243.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 120,
+                "bandwidth_usage": 4,
+                "port_speed_mbit": 3000
+            }
+        ],
+        "ips": [
+            "169.150.231.243"
+        ],
+        "dns": [
+            "169-150-231-243.pool.ovpn.com"
+        ]
     },
     {
         "city": "Erfurt",
         "country": "Germany",
         "iso": "DE",
         "slug": "erfurt",
-        "ips": [],
-        "dns": []
+        "api_slug": "erfurt",
+        "servers": [
+            {
+                "name": "VPN90",
+                "ip": "84.19.175.164",
+                "pool_dns": "84-19-175-164.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 247,
+                "bandwidth_usage": 25,
+                "port_speed_mbit": 1000
+            },
+            {
+                "name": "VPN93",
+                "ip": "217.114.215.130",
+                "pool_dns": "217-114-215-130.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 169,
+                "bandwidth_usage": 17,
+                "port_speed_mbit": 1000
+            }
+        ],
+        "ips": [
+            "84.19.175.164",
+            "217.114.215.130"
+        ],
+        "dns": [
+            "84-19-175-164.pool.ovpn.com",
+            "217-114-215-130.pool.ovpn.com"
+        ]
     },
     {
         "city": "Frankfurt",
         "country": "Germany",
         "iso": "DE",
         "slug": "frankfurt",
-        "ips": [],
-        "dns": []
+        "api_slug": "frankfurt",
+        "servers": [
+            {
+                "name": "VPN94",
+                "ip": "45.141.152.69",
+                "pool_dns": "45-141-152-69.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 690,
+                "bandwidth_usage": 23,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN98",
+                "ip": "45.141.152.68",
+                "pool_dns": "45-141-152-68.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 262,
+                "bandwidth_usage": 9,
+                "port_speed_mbit": 3000
+            }
+        ],
+        "ips": [
+            "45.141.152.69",
+            "45.141.152.68"
+        ],
+        "dns": [
+            "45-141-152-69.pool.ovpn.com",
+            "45-141-152-68.pool.ovpn.com"
+        ]
     },
     {
         "city": "Gothenburg",
         "country": "Sweden",
         "iso": "SE",
         "slug": "gothenburg",
+        "api_slug": "gothenburg",
+        "servers": [
+            {
+                "name": "VPN57",
+                "ip": "193.187.91.195",
+                "pool_dns": "193-187-91-195.pool.ovpn.com",
+                "online": true,
+                "uptime": "9 hours",
+                "bandwidth_mbit": 398,
+                "bandwidth_usage": 13,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN58",
+                "ip": "193.187.91.196",
+                "pool_dns": "193-187-91-196.pool.ovpn.com",
+                "online": true,
+                "uptime": "9 hours",
+                "bandwidth_mbit": 301,
+                "bandwidth_usage": 10,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN59",
+                "ip": "193.187.91.197",
+                "pool_dns": "193-187-91-197.pool.ovpn.com",
+                "online": true,
+                "uptime": "9 hours",
+                "bandwidth_mbit": 410,
+                "bandwidth_usage": 14,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN65",
+                "ip": "193.187.91.198",
+                "pool_dns": "193-187-91-198.pool.ovpn.com",
+                "online": true,
+                "uptime": "9 hours",
+                "bandwidth_mbit": 371,
+                "bandwidth_usage": 12,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN66",
+                "ip": "193.187.91.199",
+                "pool_dns": "193-187-91-199.pool.ovpn.com",
+                "online": true,
+                "uptime": "9 hours",
+                "bandwidth_mbit": 707,
+                "bandwidth_usage": 24,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN67",
+                "ip": "193.187.91.200",
+                "pool_dns": "193-187-91-200.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 540,
+                "bandwidth_usage": 18,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN78",
+                "ip": "193.187.91.201",
+                "pool_dns": "193-187-91-201.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 431,
+                "bandwidth_usage": 14,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN79",
+                "ip": "193.187.91.202",
+                "pool_dns": "193-187-91-202.pool.ovpn.com",
+                "online": true,
+                "uptime": "9 hours",
+                "bandwidth_mbit": 246,
+                "bandwidth_usage": 8,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN80",
+                "ip": "193.187.91.203",
+                "pool_dns": "193-187-91-203.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 264,
+                "bandwidth_usage": 9,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN81",
+                "ip": "193.187.91.204",
+                "pool_dns": "193-187-91-204.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 801,
+                "bandwidth_usage": 27,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN82",
+                "ip": "193.187.91.205",
+                "pool_dns": "193-187-91-205.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 369,
+                "bandwidth_usage": 12,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN83",
+                "ip": "193.187.91.206",
+                "pool_dns": "193-187-91-206.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 188,
+                "bandwidth_usage": 6,
+                "port_speed_mbit": 3000
+            }
+        ],
         "ips": [
             "193.187.91.195",
             "193.187.91.196",
@@ -142,50 +458,269 @@
         "country": "Finland",
         "iso": "FI",
         "slug": "helsinki",
-        "ips": [],
-        "dns": []
+        "api_slug": "helsinki",
+        "servers": [
+            {
+                "name": "VPN104",
+                "ip": "46.246.34.51",
+                "pool_dns": "46-246-34-51.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 296,
+                "bandwidth_usage": 10,
+                "port_speed_mbit": 3000
+            }
+        ],
+        "ips": [
+            "46.246.34.51"
+        ],
+        "dns": [
+            "46-246-34-51.pool.ovpn.com"
+        ]
     },
     {
         "city": "Kyiv",
         "country": "Ukraine",
         "iso": "UA",
         "slug": "kyiv",
-        "ips": [],
-        "dns": []
+        "api_slug": "kyiv",
+        "servers": [
+            {
+                "name": "VPN96",
+                "ip": "143.244.46.147",
+                "pool_dns": "143-244-46-147.pool.ovpn.com",
+                "online": true,
+                "uptime": "23 hours",
+                "bandwidth_mbit": 27,
+                "bandwidth_usage": 3,
+                "port_speed_mbit": 1000
+            }
+        ],
+        "ips": [
+            "143.244.46.147"
+        ],
+        "dns": [
+            "143-244-46-147.pool.ovpn.com"
+        ]
     },
     {
         "city": "London",
         "country": "United Kingdom",
         "iso": "UK",
         "slug": "london",
-        "ips": [],
-        "dns": []
+        "api_slug": "london",
+        "servers": [
+            {
+                "name": "VPN68",
+                "ip": "89.238.176.3",
+                "pool_dns": "89-238-176-3.pool.ovpn.com",
+                "online": true,
+                "uptime": "8 hours",
+                "bandwidth_mbit": 141,
+                "bandwidth_usage": 5,
+                "port_speed_mbit": 3000
+            }
+        ],
+        "ips": [
+            "89.238.176.3"
+        ],
+        "dns": [
+            "89-238-176-3.pool.ovpn.com"
+        ]
     },
     {
         "city": "Los Angeles",
         "country": "United States",
         "iso": "US",
         "slug": "losangeles",
-        "ips": [
-            "45.83.89.131"
-        ],
-        "dns": [
-            "45-83-89-131.pool.ovpn.com"
-        ]
+        "api_slug": "los-angeles",
+        "servers": [],
+        "ips": [],
+        "dns": []
     },
     {
         "city": "Madrid",
         "country": "Spain",
         "iso": "ES",
         "slug": "madrid",
-        "ips": [],
-        "dns": []
+        "api_slug": "madrid",
+        "servers": [
+            {
+                "name": "VPN70",
+                "ip": "192.145.124.3",
+                "pool_dns": "192-145-124-3.pool.ovpn.com",
+                "online": true,
+                "uptime": "8 hours",
+                "bandwidth_mbit": 135,
+                "bandwidth_usage": 14,
+                "port_speed_mbit": 1000
+            }
+        ],
+        "ips": [
+            "192.145.124.3"
+        ],
+        "dns": [
+            "192-145-124-3.pool.ovpn.com"
+        ]
     },
     {
         "city": "Malmö",
         "country": "Sweden",
         "iso": "SE",
         "slug": "malmo",
+        "api_slug": "malmo",
+        "servers": [
+            {
+                "name": "VPN01",
+                "ip": "185.157.163.3",
+                "pool_dns": "185-157-163-3.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 169,
+                "bandwidth_usage": 11,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN06",
+                "ip": "185.157.163.4",
+                "pool_dns": "185-157-163-4.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 135,
+                "bandwidth_usage": 9,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN07",
+                "ip": "185.157.163.5",
+                "pool_dns": "185-157-163-5.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 413,
+                "bandwidth_usage": 28,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN08",
+                "ip": "185.157.163.6",
+                "pool_dns": "185-157-163-6.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 171,
+                "bandwidth_usage": 11,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN40",
+                "ip": "185.157.163.7",
+                "pool_dns": "185-157-163-7.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 171,
+                "bandwidth_usage": 11,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN41",
+                "ip": "185.157.163.8",
+                "pool_dns": "185-157-163-8.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 174,
+                "bandwidth_usage": 12,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN42",
+                "ip": "185.157.163.9",
+                "pool_dns": "185-157-163-9.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 111,
+                "bandwidth_usage": 7,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN49",
+                "ip": "185.157.163.10",
+                "pool_dns": "185-157-163-10.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 181,
+                "bandwidth_usage": 12,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN50",
+                "ip": "185.157.163.11",
+                "pool_dns": "185-157-163-11.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 315,
+                "bandwidth_usage": 21,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN51",
+                "ip": "185.157.163.12",
+                "pool_dns": "185-157-163-12.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 70,
+                "bandwidth_usage": 5,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN52",
+                "ip": "185.157.163.13",
+                "pool_dns": "185-157-163-13.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 139,
+                "bandwidth_usage": 9,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN53",
+                "ip": "185.157.163.14",
+                "pool_dns": "185-157-163-14.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 158,
+                "bandwidth_usage": 11,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN54",
+                "ip": "185.157.163.15",
+                "pool_dns": "185-157-163-15.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 1202,
+                "bandwidth_usage": 80,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN55",
+                "ip": "185.157.163.16",
+                "pool_dns": "185-157-163-16.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 242,
+                "bandwidth_usage": 16,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN56",
+                "ip": "185.157.163.17",
+                "pool_dns": "185-157-163-17.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 272,
+                "bandwidth_usage": 18,
+                "port_speed_mbit": 1500
+            }
+        ],
         "ips": [
             "185.157.163.3",
             "185.157.163.4",
@@ -226,6 +761,19 @@
         "country": "United States",
         "iso": "US",
         "slug": "miami",
+        "api_slug": "miami",
+        "servers": [
+            {
+                "name": "VPN34",
+                "ip": "45.134.142.3",
+                "pool_dns": "45-134-142-3.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 35,
+                "bandwidth_usage": 4,
+                "port_speed_mbit": 1000
+            }
+        ],
         "ips": [
             "45.134.142.3"
         ],
@@ -238,14 +786,33 @@
         "country": "Italy",
         "iso": "IT",
         "slug": "milan",
-        "ips": [],
-        "dns": []
+        "api_slug": "milan",
+        "servers": [
+            {
+                "name": "VPN100",
+                "ip": "94.198.96.163",
+                "pool_dns": "94-198-96-163.pool.ovpn.com",
+                "online": true,
+                "uptime": "8 hours",
+                "bandwidth_mbit": 135,
+                "bandwidth_usage": 14,
+                "port_speed_mbit": 1000
+            }
+        ],
+        "ips": [
+            "94.198.96.163"
+        ],
+        "dns": [
+            "94-198-96-163.pool.ovpn.com"
+        ]
     },
     {
         "city": "New York",
         "country": "United States",
         "iso": "US",
         "slug": "newyork",
+        "api_slug": "new-york",
+        "servers": [],
         "ips": [],
         "dns": []
     },
@@ -254,14 +821,88 @@
         "country": "Germany",
         "iso": "DE",
         "slug": "offenbach",
-        "ips": [],
-        "dns": []
+        "api_slug": "offenbach",
+        "servers": [
+            {
+                "name": "VPN101",
+                "ip": "138.199.38.149",
+                "pool_dns": "138-199-38-149.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 523,
+                "bandwidth_usage": 17,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN92",
+                "ip": "138.199.38.131",
+                "pool_dns": "138-199-38-131.pool.ovpn.com",
+                "online": false,
+                "uptime": "3 days",
+                "bandwidth_mbit": 303,
+                "bandwidth_usage": 10,
+                "port_speed_mbit": 3000
+            },
+            {
+                "name": "VPN92",
+                "ip": "138.199.38.131",
+                "pool_dns": "138-199-38-131.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 665,
+                "bandwidth_usage": 22,
+                "port_speed_mbit": 3000
+            }
+        ],
+        "ips": [
+            "138.199.38.149",
+            "138.199.38.131",
+            "138.199.38.131"
+        ],
+        "dns": [
+            "138-199-38-149.pool.ovpn.com",
+            "138-199-38-131.pool.ovpn.com",
+            "138-199-38-131.pool.ovpn.com"
+        ]
     },
     {
         "city": "Oslo",
         "country": "Norway",
         "iso": "NO",
         "slug": "oslo",
+        "api_slug": "oslo",
+        "servers": [
+            {
+                "name": "VPN37",
+                "ip": "45.148.18.35",
+                "pool_dns": "45-148-18-35.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 92,
+                "bandwidth_usage": 9,
+                "port_speed_mbit": 1000
+            },
+            {
+                "name": "VPN38",
+                "ip": "45.148.18.36",
+                "pool_dns": "45-148-18-36.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 97,
+                "bandwidth_usage": 10,
+                "port_speed_mbit": 1000
+            },
+            {
+                "name": "VPN39",
+                "ip": "45.148.18.37",
+                "pool_dns": "45-148-18-37.pool.ovpn.com",
+                "online": true,
+                "uptime": "3 days",
+                "bandwidth_mbit": 98,
+                "bandwidth_usage": 10,
+                "port_speed_mbit": 1000
+            }
+        ],
         "ips": [
             "45.148.18.35",
             "45.148.18.36",
@@ -278,30 +919,83 @@
         "country": "France",
         "iso": "FX",
         "slug": "paris",
-        "ips": [],
-        "dns": []
+        "api_slug": "paris",
+        "servers": [
+            {
+                "name": "VPN69",
+                "ip": "139.28.219.35",
+                "pool_dns": "139-28-219-35.pool.ovpn.com",
+                "online": true,
+                "uptime": "7 hours",
+                "bandwidth_mbit": 306,
+                "bandwidth_usage": 31,
+                "port_speed_mbit": 1000
+            }
+        ],
+        "ips": [
+            "139.28.219.35"
+        ],
+        "dns": [
+            "139-28-219-35.pool.ovpn.com"
+        ]
     },
     {
         "city": "Seattle",
         "country": "United States",
         "iso": "US",
         "slug": "seattle",
-        "ips": [],
-        "dns": []
+        "api_slug": "seattle",
+        "servers": [
+            {
+                "name": "VPN102",
+                "ip": "156.146.51.227",
+                "pool_dns": "156-146-51-227.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 162,
+                "bandwidth_usage": 5,
+                "port_speed_mbit": 3000
+            }
+        ],
+        "ips": [
+            "156.146.51.227"
+        ],
+        "dns": [
+            "156-146-51-227.pool.ovpn.com"
+        ]
     },
     {
         "city": "Singapore",
         "country": "Singapore",
         "iso": "SG",
         "slug": "singapore",
-        "ips": [],
-        "dns": []
+        "api_slug": "singapore",
+        "servers": [
+            {
+                "name": "VPN77",
+                "ip": "37.120.208.35",
+                "pool_dns": "37-120-208-35.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 63,
+                "bandwidth_usage": 6,
+                "port_speed_mbit": 1000
+            }
+        ],
+        "ips": [
+            "37.120.208.35"
+        ],
+        "dns": [
+            "37-120-208-35.pool.ovpn.com"
+        ]
     },
     {
         "city": "Stockholm",
         "country": "Sweden",
         "iso": "SE",
         "slug": "stockholm",
+        "api_slug": "stockholm",
+        "servers": [],
         "ips": [],
         "dns": []
     },
@@ -310,14 +1004,80 @@
         "country": "Sweden",
         "iso": "SE",
         "slug": "sundsvall",
-        "ips": [],
-        "dns": []
+        "api_slug": "sundsvall",
+        "servers": [
+            {
+                "name": "VPN85",
+                "ip": "45.148.17.36",
+                "pool_dns": "45-148-17-36.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 246,
+                "bandwidth_usage": 16,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN86",
+                "ip": "45.148.17.37",
+                "pool_dns": "45-148-17-37.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 92,
+                "bandwidth_usage": 6,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN87",
+                "ip": "45.148.17.38",
+                "pool_dns": "45-148-17-38.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 244,
+                "bandwidth_usage": 16,
+                "port_speed_mbit": 1500
+            },
+            {
+                "name": "VPN88",
+                "ip": "45.148.17.39",
+                "pool_dns": "45-148-17-39.pool.ovpn.com",
+                "online": true,
+                "uptime": "11 hours",
+                "bandwidth_mbit": 482,
+                "bandwidth_usage": 32,
+                "port_speed_mbit": 1500
+            }
+        ],
+        "ips": [
+            "45.148.17.36",
+            "45.148.17.37",
+            "45.148.17.38",
+            "45.148.17.39"
+        ],
+        "dns": [
+            "45-148-17-36.pool.ovpn.com",
+            "45-148-17-37.pool.ovpn.com",
+            "45-148-17-38.pool.ovpn.com",
+            "45-148-17-39.pool.ovpn.com"
+        ]
     },
     {
         "city": "Sydney",
         "country": "Australia",
         "iso": "AU",
         "slug": "sydney",
+        "api_slug": "sydney",
+        "servers": [
+            {
+                "name": "VPN26",
+                "ip": "217.138.204.35",
+                "pool_dns": "217-138-204-35.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 262,
+                "bandwidth_usage": 26,
+                "port_speed_mbit": 1000
+            }
+        ],
         "ips": [
             "217.138.204.35"
         ],
@@ -330,14 +1090,44 @@
         "country": "Japan",
         "iso": "JP",
         "slug": "tokyo",
-        "ips": [],
-        "dns": []
+        "api_slug": "tokyo",
+        "servers": [
+            {
+                "name": "VPN89",
+                "ip": "217.138.212.51",
+                "pool_dns": "217-138-212-51.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 155,
+                "bandwidth_usage": 16,
+                "port_speed_mbit": 1000
+            }
+        ],
+        "ips": [
+            "217.138.212.51"
+        ],
+        "dns": [
+            "217-138-212-51.pool.ovpn.com"
+        ]
     },
     {
         "city": "Toronto",
         "country": "Canada",
         "iso": "CA",
         "slug": "toronto",
+        "api_slug": "toronto",
+        "servers": [
+            {
+                "name": "VPN25",
+                "ip": "104.245.145.244",
+                "pool_dns": "104-245-145-244.pool.ovpn.com",
+                "online": true,
+                "uptime": "4 days",
+                "bandwidth_mbit": 441,
+                "bandwidth_usage": 15,
+                "port_speed_mbit": 3000
+            }
+        ],
         "ips": [
             "104.245.145.244"
         ],
@@ -350,6 +1140,19 @@
         "country": "Austria",
         "iso": "AT",
         "slug": "vienna",
+        "api_slug": "vienna",
+        "servers": [
+            {
+                "name": "VPN44",
+                "ip": "37.120.212.227",
+                "pool_dns": "37-120-212-227.pool.ovpn.com",
+                "online": true,
+                "uptime": "8 hours",
+                "bandwidth_mbit": 530,
+                "bandwidth_usage": 18,
+                "port_speed_mbit": 3000
+            }
+        ],
         "ips": [
             "37.120.212.227"
         ],
@@ -362,14 +1165,44 @@
         "country": "Poland",
         "iso": "PL",
         "slug": "warsaw",
-        "ips": [],
-        "dns": []
+        "api_slug": "warsaw",
+        "servers": [
+            {
+                "name": "VPN95",
+                "ip": "138.199.59.3",
+                "pool_dns": "138-199-59-3.pool.ovpn.com",
+                "online": true,
+                "uptime": "8 hours",
+                "bandwidth_mbit": 372,
+                "bandwidth_usage": 37,
+                "port_speed_mbit": 1000
+            }
+        ],
+        "ips": [
+            "138.199.59.3"
+        ],
+        "dns": [
+            "138-199-59-3.pool.ovpn.com"
+        ]
     },
     {
         "city": "Zurich",
         "country": "Switzerland",
         "iso": "CH",
         "slug": "zurich",
+        "api_slug": "zurich",
+        "servers": [
+            {
+                "name": "VPN43",
+                "ip": "152.89.162.4",
+                "pool_dns": "152-89-162-4.pool.ovpn.com",
+                "online": true,
+                "uptime": "8 hours",
+                "bandwidth_mbit": 404,
+                "bandwidth_usage": 13,
+                "port_speed_mbit": 3000
+            }
+        ],
         "ips": [
             "152.89.162.4"
         ],
