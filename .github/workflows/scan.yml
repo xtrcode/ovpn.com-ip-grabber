@@ -23,10 +23,13 @@ jobs:
           extensions: curl, intl, dom
 
       - name: Install dig (dnsutils)
-        run: sudo apt update && sudo apt install -yq dnsutils
+        run: sudo apt update && sudo apt install -yq dnsutils iputils-ping
 
       - name: Run scanner
         run: php ovpn.php --dig --output=results/servers.json
+
+      - name: Benchmark
+        run: php bench.php --input=results/servers.json --output=results/bench.json
 
       - name: Write metadata
         run: |
@@ -37,9 +40,6 @@ jobs:
             "ips":        $(jq '[.[] | (.ips // []) | length] | add // 0' results/servers.json)
           }
           JSON
-
-      - name: Benchmark
-        run: php bench.php --input=results/servers.json --output=results/bench.json
 
       - name: Commit & push if changed
         run: |
