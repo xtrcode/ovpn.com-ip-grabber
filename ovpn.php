@@ -2,22 +2,19 @@
 
 /**
  * OVPN IP Fetcher
- * Scrapes status.ovpn.com to extract all VPN server cities,
- * converts them to DNS slugs, and resolves IPs via dig.
+ * Scrapes status.ovpn.com for all VPN cities, then fetches the server list
+ * for each city from the status API: /datacenters/{slug}/servers
  *
  * Usage:
  *   php ovpn_cities.php                          # list cities as JSON (stdout)
- *   php ovpn_cities.php --dig                    # resolve IPs via dig
+ *   php ovpn_cities.php --dig                    # fetch servers from API
  *   php ovpn_cities.php --dig --output=out.json  # write JSON to file
  *   php ovpn_cities.php --dig -o out.json        # shorthand
  */
 
 declare(strict_types=1);
 
-define('MAX_CONSECUTIVE_MISSES', 5);
-define('MAX_HOST_INDEX',         200);
-define('DOH_BATCH_SIZE',         20);
-define('DOH_URL',                'https://cloudflare-dns.com/dns-query');
+// ── CLI argument parsing ──────────────────────────────────────────────────────
 
 function parseArgs(array $argv): array
 {
@@ -36,16 +33,19 @@ function parseArgs(array $argv): array
         } elseif (str_starts_with($arg, '--output=')) {
             $opts['output'] = substr($arg, strlen('--output='));
         } elseif ($arg === '--output' || $arg === '-o') {
-            $opts['output'] = $args[++$i] ?? null;
+            if (!isset($args[$i + 1])) {
+                fwrite(STDERR, "FATAL: --output / -o requires a filename argument.\n");
+                exit(1);
+            }
+            $opts['output'] = $args[++$i];
+        } else {
+            fwrite(STDERR, "Warning: Unknown argument ignored: $arg\n");
         }
     }
 
     return $opts;
 }
 
-/**
- * Print a status line to STDERR so it never pollutes JSON stdout/file output.
- */
 function status(string $msg): void
 {
     fwrite(STDERR, $msg . "\n");
@@ -62,33 +62,47 @@ function fetchPage(string $url): string
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_TIMEOUT        => 15,
+        CURLOPT_CONNECTTIMEOUT => 10,
         CURLOPT_USERAGENT      => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36',
-        CURLOPT_HTTPHEADER     => ['Accept-Language: en-US,en;q=0.9'],
+        CURLOPT_HTTPHEADER     => ['Accept-Language: en-US,en;q=0.9', 'Accept: application/json, text/html'],
         CURLOPT_SSL_VERIFYPEER => true,
     ]);
 
-    $body = curl_exec($ch);
-    $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    $err  = curl_error($ch);
+    $body  = curl_exec($ch);
+    $code  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $time  = round(curl_getinfo($ch, CURLINFO_TOTAL_TIME) * 1000);
+    $err   = curl_error($ch);
+    $errno = curl_errno($ch);
     curl_close($ch);
 
     if ($body === false || $err) {
-        throw new RuntimeException("cURL error: $err");
+        throw new RuntimeException("cURL failed (errno {$errno}): {$err} — URL: {$url}");
     }
+
+    if ($code === 404) {
+        throw new RuntimeException("HTTP 404 Not Found: {$url}");
+    }
+
     if ($code !== 200) {
-        throw new RuntimeException("HTTP $code received from $url");
+        throw new RuntimeException("HTTP {$code} from {$url} ({$time}ms)");
+    }
+
+    if (strlen($body) < 10) {
+        throw new RuntimeException("Response too small (" . strlen($body) . " bytes) from {$url}");
     }
 
     return $body;
 }
 
-function cityToSlug(string $city): string
+/**
+ * DNS slug: strips everything non-alpha.
+ * "Los Angeles" → "losangeles", "Malmö" → "malmo"
+ */
+function cityToDnsSlug(string $city): string
 {
     if (function_exists('transliterator_transliterate')) {
-        $slug = transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', $city);
-        if ($slug !== false) {
-            return preg_replace('/[^a-z]/', '', $slug);
-        }
+        $s = transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', $city);
+        if ($s !== false) return preg_replace('/[^a-z]/', '', $s);
     }
 
     $map = [
@@ -148,8 +162,50 @@ function cityToSlug(string $city): string
     return preg_replace('/[^a-z]/', '', strtolower(strtr($city, $map)));
 }
 
+/**
+ * API slug: keeps hyphens between words (different from DNS slug).
+ * "Los Angeles" → "los-angeles", "New York" → "new-york", "Malmö" → "malmo"
+ */
+function cityToApiSlug(string $city): string
+{
+    if (function_exists('transliterator_transliterate')) {
+        $s = transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', $city);
+        if ($s !== false) {
+            return trim(preg_replace('/[^a-z0-9]+/', '-', $s), '-');
+        }
+    }
+
+    $map = [
+        'ä' => 'a',
+        'á' => 'a',
+        'à' => 'a',
+        'â' => 'a',
+        'å' => 'a',
+        'ö' => 'o',
+        'ó' => 'o',
+        'ø' => 'o',
+        'ü' => 'u',
+        'ú' => 'u',
+        'é' => 'e',
+        'è' => 'e',
+        'ê' => 'e',
+        'ñ' => 'n',
+        'ç' => 'c',
+        'ß' => 'ss',
+    ];
+
+    return trim(preg_replace('/[^a-z0-9]+/', '-', strtolower(strtr($city, $map))), '-');
+}
+
+// ── City parser ───────────────────────────────────────────────────────────────
+
 function parseCities(string $html): array
 {
+    if (!extension_loaded('intl')) {
+        throw new RuntimeException('The intl PHP extension is required (used for country ISO code lookup).');
+    }
+
+    // Build reverse map: "Germany" → "DE", "Sweden" → "SE", … via ICU — no hardcoding.
     $countryMap = [];
     foreach (range('A', 'Z') as $a) {
         foreach (range('A', 'Z') as $b) {
@@ -196,11 +252,25 @@ function parseCities(string $html): array
         if (isset($seen[$key])) continue;
         $seen[$key] = true;
 
+        $iso = $countryMap[$country] ?? 'XX';
+        if ($iso === 'XX') {
+            status("Unknown country ISO for: '{$country}' (city: {$city})");
+        }
+
         $cities[] = [
-            'city'    => $city,
-            'country' => $country,
-            'iso'     => $countryMap[$country] ?? 'XX',
+            'city'     => $city,
+            'country'  => $country,
+            'iso'      => $iso,
+            'slug'     => cityToDnsSlug($city),
+            'api_slug' => cityToApiSlug($city),
         ];
+    }
+
+    if (empty($cities)) {
+        throw new RuntimeException(
+            "No cities parsed from HTML — page structure may have changed.\n" .
+                "  Check https://status.ovpn.com manually."
+        );
     }
 
     usort($cities, fn($a, $b) => strcmp($a['city'], $b['city']));
@@ -214,140 +284,59 @@ function ipToPoolDns(string $ip): string
 }
 
 /**
- * Resolve all VPN server IPs for a city slug using parallel DNS-over-HTTPS
- * (Cloudflare 1.1.1.1). Falls back to native gethostbynamel() if cURL is
- * unavailable. Stops after MAX_CONSECUTIVE_MISSES sequential NXDOMAINs to
- * avoid wasting time on non-existent high-numbered hosts.
+ * Fetch the server list for a city from the OVPN status API.
+ * Endpoint: https://status.ovpn.com/datacenters/{api_slug}/servers
+ * Response: {"data":[{"online":bool,"uptime":string,"bandwidth":int,
+ *            "bandwidth_usage":int,"port_speed":int,"name":string,"ip":string}]}
  */
-function resolveIps(string $slug): array
+function fetchCityServers(string $apiSlug): array
 {
-    // Build the full candidate list first, then batch-resolve.
-    $hosts  = [];
-    for ($i = 1; $i <= MAX_HOST_INDEX; $i++) {
-        $hosts[] = sprintf("vpn%02d.prd.%s.ovpn.com", $i, $slug);
+    $url = "https://status.ovpn.com/datacenters/{$apiSlug}/servers";
+
+    try {
+        $body = fetchPage($url);
+    } catch (RuntimeException $e) {
+        status("API error [{$apiSlug}]: " . $e->getMessage());
+        return [];
     }
 
-    // Prefer parallel DoH via curl_multi; fall back to sequential gethostbynamel.
-    if (function_exists('curl_multi_init')) {
-        $ips = resolveIpsDoH($hosts);
-        if (!empty($ips)) {
-            return $ips;
-        }
-        status("DoH returned no results for slug '{$slug}', falling back to native resolver");
+    try {
+        $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+    } catch (\JsonException $e) {
+        status("Invalid JSON from [{$url}]: " . $e->getMessage());
+        return [];
     }
 
-    return resolveIpsNative($hosts);
+    if (!isset($json['data']) || !is_array($json['data'])) {
+        status("Unexpected API structure for [{$apiSlug}] — 'data' key missing or not an array");
+        return [];
+    }
+
+    return $json['data'];
 }
 
 /**
- * Parallel DNS-over-HTTPS using curl_multi (Cloudflare 1.1.1.1 JSON API).
- * Processes hosts in batches and stops early once MAX_CONSECUTIVE_MISSES
- * sequential batches return no new IPs.
- *
- * @param  string[] $hosts
- * @return string[]
+ * Normalize a raw server entry from the API into a clean output structure.
  */
-function resolveIpsDoH(array $hosts): array
+function normalizeServer(array $server): array
 {
-    return resolveIpsDoHProvider($hosts, DOH_URL);
-}
+    $ip = trim($server['ip'] ?? '');
 
-/**
- * Parallel fallback using Google DoH (dns.google/resolve).
- * Used when Cloudflare DoH returns no results (rate-limited, blocked, etc.).
- * Falls back to sequential gethostbynamel() if curl_multi is unavailable.
- *
- * @param  string[] $hosts
- * @return string[]
- */
-function resolveIpsNative(array $hosts): array
-{
-
-    // Last-resort sequential fallback (no curl_multi available).
-    $ips               = [];
-    foreach ($hosts as $host) {
-        exec("dig +short $host", $output, $exitCode);
-        if ($exitCode !== 0) {
-            throw new RuntimeException("dig command failed with exit code $exitCode");
-        }
-        echo ".";
-        $ips = array_values(array_filter($ips));
+    if ($ip !== '' && filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === false) {
+        status("Error response: '{$ip}' for server '{$server['name']}' — skipping");
+        $ip = '';
     }
 
-    echo "\n";
-    return $ips;
-}
-
-/**
- * Parallel DoH resolver against an arbitrary JSON-API endpoint.
- * Compatible with both Cloudflare (application/dns-json) and Google (dns.google/resolve).
- *
- * @param  string[] $hosts
- * @param  string   $endpoint  Base URL, e.g. 'https://dns.google/resolve'
- * @return string[]
- */
-function resolveIpsDoHProvider(array $hosts, string $endpoint): array
-{
-    $ips               = [];
-    $consecutiveMisses = 0;
-
-    foreach (array_chunk($hosts, DOH_BATCH_SIZE) as $batch) {
-        $mh      = curl_multi_init();
-        $handles = [];
-
-        foreach ($batch as $host) {
-            $ch = curl_init($endpoint . '?' . http_build_query(['name' => $host, 'type' => 'A']));
-            curl_setopt_array($ch, [
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_TIMEOUT        => 10,
-                CURLOPT_HTTPHEADER     => ['Accept: application/dns-json'],
-                CURLOPT_SSL_VERIFYPEER => true,
-            ]);
-            curl_multi_add_handle($mh, $ch);
-            $handles[$host] = $ch;
-            //status("DoH ({$endpoint}): $host");
-        }
-
-        $active = null;
-        do {
-            curl_multi_exec($mh, $active);
-            curl_multi_select($mh);
-        } while ($active > 0);
-
-        $batchHits = 0;
-        foreach ($handles as $host => $ch) {
-            $body = curl_multi_getcontent($ch);
-            curl_multi_remove_handle($mh, $ch);
-            curl_close($ch);
-
-            if ($body === false || $body === '') continue;
-
-            $data = json_decode($body, true);
-            if (!isset($data['Answer']) || !is_array($data['Answer'])) continue;
-
-            foreach ($data['Answer'] as $record) {
-                if (($record['type'] ?? 0) === 1 && isset($record['data'])) {
-                    $ip = $record['data'];
-                    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) && !in_array($ip, $ips, true)) {
-                        $ips[] = $ip;
-                        $batchHits++;
-                    }
-                }
-            }
-        }
-
-        curl_multi_close($mh);
-
-        if ($batchHits === 0) {
-            if (++$consecutiveMisses >= 3) {
-                break;
-            }
-        } else {
-            $consecutiveMisses = 0;
-        }
-    }
-
-    return $ips;
+    return [
+        'name'            => $server['name']            ?? null,
+        'ip'              => $ip,
+        'pool_dns'        => $ip !== '' ? ipToPoolDns($ip) : null,
+        'online'          => (bool)  ($server['online']          ?? false),
+        'uptime'          => $server['uptime']          ?? null,
+        'bandwidth_mbit'  => (int)   ($server['bandwidth']       ?? 0),
+        'bandwidth_usage' => (int)   ($server['bandwidth_usage'] ?? 0),
+        'port_speed_mbit' => (int)   ($server['port_speed']      ?? 0),
+    ];
 }
 
 function writeOutput(string $json, ?string $outputFile): void
@@ -358,64 +347,129 @@ function writeOutput(string $json, ?string $outputFile): void
     }
 
     $dir = dirname($outputFile);
+
     if ($dir !== '.' && !is_dir($dir)) {
         if (!mkdir($dir, 0755, true)) {
-            throw new RuntimeException("Cannot create directory: $dir");
+            $err = error_get_last();
+            throw new RuntimeException(
+                "Cannot create directory: {$dir}\n" .
+                    "  " . ($err['message'] ?? 'Unknown error')
+            );
         }
     }
 
-    if (file_put_contents($outputFile, $json . "\n") === false) {
-        throw new RuntimeException("Cannot write to file: $outputFile");
+    if (!is_writable($dir)) {
+        throw new RuntimeException(
+            "Output directory is not writable: {$dir}\n" .
+                "  Check permissions for the target path."
+        );
     }
 
-    status("Output written to: $outputFile");
+    $bytes = file_put_contents($outputFile, $json . "\n");
+
+    if ($bytes === false) {
+        $err = error_get_last();
+        throw new RuntimeException(
+            "Failed to write: {$outputFile}\n" .
+                "  " . ($err['message'] ?? 'Unknown error')
+        );
+    }
+
+    status("Output written to: {$outputFile} ({$bytes} bytes)");
 }
 
 // Main
 
+if (!extension_loaded('curl')) {
+    fwrite(STDERR, "FATAL: ext-curl is required.\n");
+    exit(1);
+}
+if (!extension_loaded('dom')) {
+    fwrite(STDERR, "FATAL: ext-dom is required.\n");
+    exit(1);
+}
+if (!extension_loaded('intl')) {
+    fwrite(STDERR, "FATAL: ext-intl is required.\n");
+    exit(1);
+}
+
 $opts = parseArgs($argv);
 
-status("\e[1mOVPN IP Grabber\e[0m");
+status("\e[1mOVPN IP Fetcher\e[0m");
 status("Repository: https://github.com/xtrcode/ovpn-ip-grabber");
 status("License: MIT");
 status(str_repeat('─', 47));
 
+status("\nFetching city list from status.ovpn.com...");
+
 try {
-    $html = fetchPage('https://status.ovpn.com');
+    $html   = fetchPage('https://status.ovpn.com');
+    $cities = parseCities($html);
 } catch (RuntimeException $e) {
-    fwrite(STDERR, "\e[31mFetch error: {$e->getMessage()}\e[0m\n");
+    fwrite(STDERR, "\e[31mFATAL: {$e->getMessage()}\e[0m\n");
     exit(1);
 }
 
-$cities = parseCities($html);
+status("Cities found: " . count($cities));
 
-if (empty($cities)) {
-    fwrite(STDERR, "\e[31mNo cities found — page structure may have changed.\e[0m\n");
-    exit(1);
-}
-
-status("\nCities found: " . count($cities));
-
-$results = array_map(function (array $city): array {
-    $city['slug'] = cityToSlug($city['city']);
-    return $city;
-}, $cities);
-
-if ($opts['dig']) {
-    status("\n" . str_repeat('─', 60));
-    status("\e[1mResolving IPs via dig...\e[0m");
-    status(str_repeat('─', 60));
-
-    foreach ($results as &$entry) {
-        $slug = $entry['slug'];
-        status("Resolving: {$entry['city']}, {$entry['country']} (slug: {$slug})");
-        $ips  = resolveIps($slug);
-
-        status($entry['country'] . ", " . $entry['city'] . ": " . count($ips) . " IP(s) found");
-        $entry['ips'] = $ips;
-        $entry['dns'] = array_map('ipToPoolDns', $ips);
+if (!$opts['dig']) {
+    try {
+        writeOutput(
+            json_encode($cities, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR),
+            $opts['output']
+        );
+    } catch (RuntimeException $e) {
+        fwrite(STDERR, "\e[31mOutput error: {$e->getMessage()}\e[0m\n");
+        exit(1);
     }
-    unset($entry);
+    exit(0);
+}
+
+status("\n" . str_repeat('─', 60));
+status("\e[1mFetching servers from API...\e[0m");
+status(str_repeat('─', 60));
+
+$results   = [];
+$totalIps  = 0;
+$failed    = [];
+
+foreach ($cities as $entry) {
+    $apiSlug = $entry['api_slug'];
+    fwrite(STDERR, sprintf("  %-25s (%-20s) ... ", $entry['city'], $apiSlug));
+
+    $raw     = fetchCityServers($apiSlug);
+    $servers = array_values(array_filter(
+        array_map('normalizeServer', $raw),
+        fn($s) => $s['ip'] !== ''          // drop entries with no valid IP
+    ));
+
+    $online = count(array_filter($servers, fn($s) => $s['online']));
+    $total  = count($servers);
+
+    if ($total === 0) {
+        fwrite(STDERR, "\e[33mno servers returned\e[0m\n");
+        $failed[] = "{$entry['city']} (slug: {$apiSlug})";
+    } else {
+        fwrite(STDERR, "\e[32m{$total} server(s), {$online} online\e[0m\n");
+        $totalIps += $total;
+    }
+
+    $entry['servers'] = $servers;
+    $entry['ips']     = array_column($servers, 'ip');
+    $entry['dns']     = array_filter(array_column($servers, 'pool_dns'));
+
+    $results[] = $entry;
+}
+
+status("\n" . str_repeat('─', 60));
+status(sprintf("Cities   : %d", count($results)));
+status(sprintf("Servers  : %d", $totalIps));
+
+if (!empty($failed)) {
+    status("\n\e[33mNo servers found for:\e[0m");
+    foreach ($failed as $f) {
+        status("  · {$f}");
+    }
 }
 
 try {
