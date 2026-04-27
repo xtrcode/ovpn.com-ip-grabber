@@ -14,6 +14,11 @@
 
 declare(strict_types=1);
 
+define('MAX_CONSECUTIVE_MISSES', 5);
+define('MAX_HOST_INDEX',         200);
+define('DOH_BATCH_SIZE',         20);
+define('DOH_URL',                'https://cloudflare-dns.com/dns-query');
+
 function parseArgs(array $argv): array
 {
     $opts = [
@@ -208,22 +213,155 @@ function ipToPoolDns(string $ip): string
     return str_replace('.', '-', $ip) . '.pool.ovpn.com';
 }
 
+/**
+ * Resolve all VPN server IPs for a city slug using parallel DNS-over-HTTPS
+ * (Cloudflare 1.1.1.1). Falls back to native gethostbynamel() if cURL is
+ * unavailable. Stops after MAX_CONSECUTIVE_MISSES sequential NXDOMAINs to
+ * avoid wasting time on non-existent high-numbered hosts.
+ */
 function resolveIps(string $slug): array
 {
-    $output = [];
-
-    for ($i = 1; $i <= 1000; $i++) {
-        $host = sprintf("vpn%02d.prd.%s.ovpn.com", $i, $slug);
-        $cmd = "dig +short $host";
-        status($cmd);
-        exec($cmd, $output, $exitCode);
-        if ($exitCode !== 0) {
-            throw new RuntimeException("dig command failed with exit code $exitCode");
-        }
-        $output = array_values(array_filter($output));
+    // Build the full candidate list first, then batch-resolve.
+    $hosts  = [];
+    for ($i = 1; $i <= MAX_HOST_INDEX; $i++) {
+        $hosts[] = sprintf("vpn%02d.prd.%s.ovpn.com", $i, $slug);
     }
 
-    return $output;
+    // Prefer parallel DoH via curl_multi; fall back to sequential gethostbynamel.
+    if (function_exists('curl_multi_init')) {
+        $ips = resolveIpsDoH($hosts);
+        if (!empty($ips)) {
+            return $ips;
+        }
+        status("DoH returned no results for slug '{$slug}', falling back to native resolver");
+    }
+
+    return resolveIpsNative($hosts);
+}
+
+/**
+ * Parallel DNS-over-HTTPS using curl_multi (Cloudflare 1.1.1.1 JSON API).
+ * Processes hosts in batches and stops early once MAX_CONSECUTIVE_MISSES
+ * sequential batches return no new IPs.
+ *
+ * @param  string[] $hosts
+ * @return string[]
+ */
+function resolveIpsDoH(array $hosts): array
+{
+    return resolveIpsDoHProvider($hosts, DOH_URL);
+}
+
+/**
+ * Parallel fallback using Google DoH (dns.google/resolve).
+ * Used when Cloudflare DoH returns no results (rate-limited, blocked, etc.).
+ * Falls back to sequential gethostbynamel() if curl_multi is unavailable.
+ *
+ * @param  string[] $hosts
+ * @return string[]
+ */
+function resolveIpsNative(array $hosts): array
+{
+    if (function_exists('curl_multi_init')) {
+        return resolveIpsDoHProvider($hosts, 'https://dns.google/resolve');
+    }
+
+    // Last-resort sequential fallback (no curl_multi available).
+    $ips               = [];
+    $consecutiveMisses = 0;
+
+    foreach ($hosts as $host) {
+        status("Resolving (native): $host");
+        $resolved = gethostbynamel($host);
+
+        if ($resolved === false || empty($resolved)) {
+            if (++$consecutiveMisses >= MAX_CONSECUTIVE_MISSES) {
+                break;
+            }
+            continue;
+        }
+
+        $consecutiveMisses = 0;
+        foreach ($resolved as $ip) {
+            if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) && !in_array($ip, $ips, true)) {
+                $ips[] = $ip;
+            }
+        }
+    }
+
+    return $ips;
+}
+
+/**
+ * Parallel DoH resolver against an arbitrary JSON-API endpoint.
+ * Compatible with both Cloudflare (application/dns-json) and Google (dns.google/resolve).
+ *
+ * @param  string[] $hosts
+ * @param  string   $endpoint  Base URL, e.g. 'https://dns.google/resolve'
+ * @return string[]
+ */
+function resolveIpsDoHProvider(array $hosts, string $endpoint): array
+{
+    $ips               = [];
+    $consecutiveMisses = 0;
+
+    foreach (array_chunk($hosts, DOH_BATCH_SIZE) as $batch) {
+        $mh      = curl_multi_init();
+        $handles = [];
+
+        foreach ($batch as $host) {
+            $ch = curl_init($endpoint . '?' . http_build_query(['name' => $host, 'type' => 'A']));
+            curl_setopt_array($ch, [
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_TIMEOUT        => 10,
+                CURLOPT_HTTPHEADER     => ['Accept: application/dns-json'],
+                CURLOPT_SSL_VERIFYPEER => true,
+            ]);
+            curl_multi_add_handle($mh, $ch);
+            $handles[$host] = $ch;
+            //status("DoH ({$endpoint}): $host");
+        }
+
+        $active = null;
+        do {
+            curl_multi_exec($mh, $active);
+            curl_multi_select($mh);
+        } while ($active > 0);
+
+        $batchHits = 0;
+        foreach ($handles as $host => $ch) {
+            $body = curl_multi_getcontent($ch);
+            curl_multi_remove_handle($mh, $ch);
+            curl_close($ch);
+
+            if ($body === false || $body === '') continue;
+
+            $data = json_decode($body, true);
+            if (!isset($data['Answer']) || !is_array($data['Answer'])) continue;
+
+            foreach ($data['Answer'] as $record) {
+                if (($record['type'] ?? 0) === 1 && isset($record['data'])) {
+                    $ip = $record['data'];
+                    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) && !in_array($ip, $ips, true)) {
+                        $ips[] = $ip;
+                        $batchHits++;
+                    }
+                }
+            }
+        }
+
+        curl_multi_close($mh);
+
+        if ($batchHits === 0) {
+            if (++$consecutiveMisses >= 3) {
+                break;
+            }
+        } else {
+            $consecutiveMisses = 0;
+        }
+    }
+
+    return $ips;
 }
 
 function writeOutput(string $json, ?string $outputFile): void
