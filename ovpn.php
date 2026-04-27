@@ -211,7 +211,10 @@ function ipToPoolDns(string $ip): string
 function resolveIps(string $slug): array
 {
     $output = [];
-    exec("bash -c \"dig +short vpn{0..1000}.prd.{$slug}.ovpn.com\"", $output);
+    exec("bash -c \"dig +short vpn{0..1000}.prd.{$slug}.ovpn.com\"", $output, $exitCode);
+    if ($exitCode !== 0) {
+        throw new RuntimeException("dig command failed with exit code $exitCode");
+    }
     return array_values(array_filter($output));
 }
 
@@ -273,6 +276,7 @@ if ($opts['dig']) {
 
     foreach ($results as &$entry) {
         $slug = $entry['slug'];
+        status("Resolving: {$entry['city']}, {$entry['country']} (slug: {$slug})");
         $ips  = resolveIps($slug);
 
         if (empty($ips)) {
