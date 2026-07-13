@@ -12,8 +12,8 @@
                 "pool_dns": "185-157-162-6.pool.ovpn.com",
                 "online": true,
                 "uptime": "62 days",
-                "bandwidth_mbit": 575,
-                "bandwidth_usage": 57,
+                "bandwidth_mbit": 146,
+                "bandwidth_usage": 15,
                 "port_speed_mbit": 1000
             },
             {
@@ -22,8 +22,8 @@
                 "pool_dns": "185-157-162-7.pool.ovpn.com",
                 "online": true,
                 "uptime": "62 days",
-                "bandwidth_mbit": 203,
-                "bandwidth_usage": 20,
+                "bandwidth_mbit": 175,
+                "bandwidth_usage": 18,
                 "port_speed_mbit": 1000
             },
             {
@@ -32,8 +32,8 @@
                 "pool_dns": "185-157-162-8.pool.ovpn.com",
                 "online": true,
                 "uptime": "62 days",
-                "bandwidth_mbit": 237,
-                "bandwidth_usage": 24,
+                "bandwidth_mbit": 221,
+                "bandwidth_usage": 22,
                 "port_speed_mbit": 1000
             },
             {
@@ -42,8 +42,8 @@
                 "pool_dns": "185-157-162-9.pool.ovpn.com",
                 "online": true,
                 "uptime": "62 days",
-                "bandwidth_mbit": 255,
-                "bandwidth_usage": 26,
+                "bandwidth_mbit": 196,
+                "bandwidth_usage": 20,
                 "port_speed_mbit": 1000
             },
             {
@@ -52,8 +52,8 @@
                 "pool_dns": "185-157-162-10.pool.ovpn.com",
                 "online": true,
                 "uptime": "62 days",
-                "bandwidth_mbit": 273,
-                "bandwidth_usage": 27,
+                "bandwidth_mbit": 258,
+                "bandwidth_usage": 26,
                 "port_speed_mbit": 1000
             }
         ],
@@ -85,8 +85,8 @@
                 "pool_dns": "45-134-140-67.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 907,
-                "bandwidth_usage": 30,
+                "bandwidth_mbit": 860,
+                "bandwidth_usage": 29,
                 "port_speed_mbit": 3000
             }
         ],
@@ -110,8 +110,8 @@
                 "pool_dns": "37-120-206-163.pool.ovpn.com",
                 "online": true,
                 "uptime": "34 days",
-                "bandwidth_mbit": 146,
-                "bandwidth_usage": 15,
+                "bandwidth_mbit": 326,
+                "bandwidth_usage": 33,
                 "port_speed_mbit": 1000
             }
         ],
@@ -135,7 +135,7 @@
                 "pool_dns": "87-249-134-67.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 256,
+                "bandwidth_mbit": 267,
                 "bandwidth_usage": 9,
                 "port_speed_mbit": 3000
             }
@@ -160,8 +160,8 @@
                 "pool_dns": "185-236-203-98.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 288,
-                "bandwidth_usage": 10,
+                "bandwidth_mbit": 342,
+                "bandwidth_usage": 11,
                 "port_speed_mbit": 3000
             }
         ],
@@ -185,8 +185,8 @@
                 "pool_dns": "194-37-97-35.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 91,
-                "bandwidth_usage": 3,
+                "bandwidth_mbit": 38,
+                "bandwidth_usage": 1,
                 "port_speed_mbit": 3000
             }
         ],
@@ -210,8 +210,8 @@
                 "pool_dns": "169-150-231-243.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 70,
-                "bandwidth_usage": 2,
+                "bandwidth_mbit": 35,
+                "bandwidth_usage": 1,
                 "port_speed_mbit": 3000
             }
         ],
@@ -235,8 +235,8 @@
                 "pool_dns": "84-19-175-164.pool.ovpn.com",
                 "online": true,
                 "uptime": "12 days",
-                "bandwidth_mbit": 281,
-                "bandwidth_usage": 28,
+                "bandwidth_mbit": 240,
+                "bandwidth_usage": 24,
                 "port_speed_mbit": 1000
             },
             {
@@ -245,8 +245,8 @@
                 "pool_dns": "217-114-215-130.pool.ovpn.com",
                 "online": true,
                 "uptime": "26 days",
-                "bandwidth_mbit": 112,
-                "bandwidth_usage": 11,
+                "bandwidth_mbit": 68,
+                "bandwidth_usage": 7,
                 "port_speed_mbit": 1000
             }
         ],
@@ -272,8 +272,8 @@
                 "pool_dns": "45-141-152-69.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 333,
-                "bandwidth_usage": 11,
+                "bandwidth_mbit": 354,
+                "bandwidth_usage": 12,
                 "port_speed_mbit": 3000
             },
             {
@@ -282,8 +282,8 @@
                 "pool_dns": "45-141-152-68.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 721,
-                "bandwidth_usage": 24,
+                "bandwidth_mbit": 322,
+                "bandwidth_usage": 11,
                 "port_speed_mbit": 3000
             }
         ],
@@ -309,8 +309,8 @@
                 "pool_dns": "193-187-91-195.pool.ovpn.com",
                 "online": true,
                 "uptime": "25 days",
-                "bandwidth_mbit": 142,
-                "bandwidth_usage": 5,
+                "bandwidth_mbit": 360,
+                "bandwidth_usage": 12,
                 "port_speed_mbit": 3000
             },
             {
@@ -319,8 +319,8 @@
                 "pool_dns": "193-187-91-196.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 1113,
-                "bandwidth_usage": 37,
+                "bandwidth_mbit": 464,
+                "bandwidth_usage": 15,
                 "port_speed_mbit": 3000
             },
             {
@@ -329,8 +329,8 @@
                 "pool_dns": "193-187-91-197.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 573,
-                "bandwidth_usage": 19,
+                "bandwidth_mbit": 324,
+                "bandwidth_usage": 11,
                 "port_speed_mbit": 3000
             },
             {
@@ -339,8 +339,8 @@
                 "pool_dns": "193-187-91-198.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 330,
-                "bandwidth_usage": 11,
+                "bandwidth_mbit": 370,
+                "bandwidth_usage": 12,
                 "port_speed_mbit": 3000
             },
             {
@@ -349,7 +349,7 @@
                 "pool_dns": "193-187-91-199.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 377,
+                "bandwidth_mbit": 387,
                 "bandwidth_usage": 13,
                 "port_speed_mbit": 3000
             },
@@ -359,8 +359,8 @@
                 "pool_dns": "193-187-91-200.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 94,
-                "bandwidth_usage": 3,
+                "bandwidth_mbit": 192,
+                "bandwidth_usage": 6,
                 "port_speed_mbit": 3000
             },
             {
@@ -369,8 +369,8 @@
                 "pool_dns": "193-187-91-201.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 126,
-                "bandwidth_usage": 4,
+                "bandwidth_mbit": 141,
+                "bandwidth_usage": 5,
                 "port_speed_mbit": 3000
             },
             {
@@ -379,7 +379,7 @@
                 "pool_dns": "193-187-91-202.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 92,
+                "bandwidth_mbit": 84,
                 "bandwidth_usage": 3,
                 "port_speed_mbit": 3000
             },
@@ -389,8 +389,8 @@
                 "pool_dns": "193-187-91-203.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 178,
-                "bandwidth_usage": 6,
+                "bandwidth_mbit": 158,
+                "bandwidth_usage": 5,
                 "port_speed_mbit": 3000
             },
             {
@@ -399,8 +399,8 @@
                 "pool_dns": "193-187-91-204.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 348,
-                "bandwidth_usage": 12,
+                "bandwidth_mbit": 467,
+                "bandwidth_usage": 16,
                 "port_speed_mbit": 3000
             },
             {
@@ -409,8 +409,8 @@
                 "pool_dns": "193-187-91-205.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 126,
-                "bandwidth_usage": 4,
+                "bandwidth_mbit": 325,
+                "bandwidth_usage": 11,
                 "port_speed_mbit": 3000
             },
             {
@@ -419,8 +419,8 @@
                 "pool_dns": "193-187-91-206.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 294,
-                "bandwidth_usage": 10,
+                "bandwidth_mbit": 326,
+                "bandwidth_usage": 11,
                 "port_speed_mbit": 3000
             }
         ],
@@ -466,8 +466,8 @@
                 "pool_dns": "46-246-34-51.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 244,
-                "bandwidth_usage": 8,
+                "bandwidth_mbit": 1010,
+                "bandwidth_usage": 34,
                 "port_speed_mbit": 3000
             }
         ],
@@ -491,8 +491,8 @@
                 "pool_dns": "143-244-46-147.pool.ovpn.com",
                 "online": true,
                 "uptime": "49 days",
-                "bandwidth_mbit": 12,
-                "bandwidth_usage": 1,
+                "bandwidth_mbit": 18,
+                "bandwidth_usage": 2,
                 "port_speed_mbit": 1000
             }
         ],
@@ -516,8 +516,8 @@
                 "pool_dns": "89-238-176-3.pool.ovpn.com",
                 "online": true,
                 "uptime": "55 days",
-                "bandwidth_mbit": 428,
-                "bandwidth_usage": 14,
+                "bandwidth_mbit": 130,
+                "bandwidth_usage": 4,
                 "port_speed_mbit": 3000
             }
         ],
@@ -551,8 +551,8 @@
                 "pool_dns": "192-145-124-3.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 63,
-                "bandwidth_usage": 6,
+                "bandwidth_mbit": 128,
+                "bandwidth_usage": 13,
                 "port_speed_mbit": 1000
             }
         ],
@@ -576,8 +576,8 @@
                 "pool_dns": "185-157-163-3.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 26,
-                "bandwidth_usage": 2,
+                "bandwidth_mbit": 62,
+                "bandwidth_usage": 4,
                 "port_speed_mbit": 1500
             },
             {
@@ -586,7 +586,7 @@
                 "pool_dns": "185-157-163-4.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 117,
+                "bandwidth_mbit": 120,
                 "bandwidth_usage": 8,
                 "port_speed_mbit": 1500
             },
@@ -596,8 +596,8 @@
                 "pool_dns": "185-157-163-5.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 35,
-                "bandwidth_usage": 2,
+                "bandwidth_mbit": 76,
+                "bandwidth_usage": 5,
                 "port_speed_mbit": 1500
             },
             {
@@ -606,8 +606,8 @@
                 "pool_dns": "185-157-163-6.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 41,
-                "bandwidth_usage": 3,
+                "bandwidth_mbit": 100,
+                "bandwidth_usage": 7,
                 "port_speed_mbit": 1500
             },
             {
@@ -616,7 +616,7 @@
                 "pool_dns": "185-157-163-7.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 42,
+                "bandwidth_mbit": 40,
                 "bandwidth_usage": 3,
                 "port_speed_mbit": 1500
             },
@@ -626,8 +626,8 @@
                 "pool_dns": "185-157-163-8.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 54,
-                "bandwidth_usage": 4,
+                "bandwidth_mbit": 159,
+                "bandwidth_usage": 11,
                 "port_speed_mbit": 1500
             },
             {
@@ -636,8 +636,8 @@
                 "pool_dns": "185-157-163-9.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 28,
-                "bandwidth_usage": 2,
+                "bandwidth_mbit": 20,
+                "bandwidth_usage": 1,
                 "port_speed_mbit": 1500
             },
             {
@@ -646,8 +646,8 @@
                 "pool_dns": "185-157-163-10.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 74,
-                "bandwidth_usage": 5,
+                "bandwidth_mbit": 67,
+                "bandwidth_usage": 4,
                 "port_speed_mbit": 1500
             },
             {
@@ -656,8 +656,8 @@
                 "pool_dns": "185-157-163-11.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 20,
-                "bandwidth_usage": 1,
+                "bandwidth_mbit": 94,
+                "bandwidth_usage": 6,
                 "port_speed_mbit": 1500
             },
             {
@@ -666,8 +666,8 @@
                 "pool_dns": "185-157-163-12.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 31,
-                "bandwidth_usage": 2,
+                "bandwidth_mbit": 64,
+                "bandwidth_usage": 4,
                 "port_speed_mbit": 1500
             },
             {
@@ -676,8 +676,8 @@
                 "pool_dns": "185-157-163-13.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 124,
-                "bandwidth_usage": 8,
+                "bandwidth_mbit": 29,
+                "bandwidth_usage": 2,
                 "port_speed_mbit": 1500
             },
             {
@@ -686,8 +686,8 @@
                 "pool_dns": "185-157-163-14.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 31,
-                "bandwidth_usage": 2,
+                "bandwidth_mbit": 832,
+                "bandwidth_usage": 55,
                 "port_speed_mbit": 1500
             },
             {
@@ -696,8 +696,8 @@
                 "pool_dns": "185-157-163-15.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 9,
-                "bandwidth_usage": 1,
+                "bandwidth_mbit": 69,
+                "bandwidth_usage": 5,
                 "port_speed_mbit": 1500
             },
             {
@@ -706,8 +706,8 @@
                 "pool_dns": "185-157-163-16.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 109,
-                "bandwidth_usage": 7,
+                "bandwidth_mbit": 132,
+                "bandwidth_usage": 9,
                 "port_speed_mbit": 1500
             },
             {
@@ -716,8 +716,8 @@
                 "pool_dns": "185-157-163-17.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 176,
-                "bandwidth_usage": 12,
+                "bandwidth_mbit": 312,
+                "bandwidth_usage": 21,
                 "port_speed_mbit": 1500
             }
         ],
@@ -769,8 +769,8 @@
                 "pool_dns": "45-134-142-3.pool.ovpn.com",
                 "online": true,
                 "uptime": "19 days",
-                "bandwidth_mbit": 64,
-                "bandwidth_usage": 6,
+                "bandwidth_mbit": 67,
+                "bandwidth_usage": 7,
                 "port_speed_mbit": 1000
             }
         ],
@@ -794,8 +794,8 @@
                 "pool_dns": "94-198-96-163.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 81,
-                "bandwidth_usage": 8,
+                "bandwidth_mbit": 129,
+                "bandwidth_usage": 13,
                 "port_speed_mbit": 1000
             }
         ],
@@ -829,8 +829,8 @@
                 "pool_dns": "138-199-38-149.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 168,
-                "bandwidth_usage": 6,
+                "bandwidth_mbit": 304,
+                "bandwidth_usage": 10,
                 "port_speed_mbit": 3000
             },
             {
@@ -849,7 +849,7 @@
                 "pool_dns": "138-199-38-131.pool.ovpn.com",
                 "online": true,
                 "uptime": "79 days",
-                "bandwidth_mbit": 574,
+                "bandwidth_mbit": 563,
                 "bandwidth_usage": 19,
                 "port_speed_mbit": 3000
             }
@@ -878,8 +878,8 @@
                 "pool_dns": "45-148-18-35.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 124,
-                "bandwidth_usage": 12,
+                "bandwidth_mbit": 89,
+                "bandwidth_usage": 9,
                 "port_speed_mbit": 1000
             },
             {
@@ -888,8 +888,8 @@
                 "pool_dns": "45-148-18-36.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 21,
-                "bandwidth_usage": 2,
+                "bandwidth_mbit": 81,
+                "bandwidth_usage": 8,
                 "port_speed_mbit": 1000
             },
             {
@@ -898,8 +898,8 @@
                 "pool_dns": "45-148-18-37.pool.ovpn.com",
                 "online": true,
                 "uptime": "37 days",
-                "bandwidth_mbit": 24,
-                "bandwidth_usage": 2,
+                "bandwidth_mbit": 55,
+                "bandwidth_usage": 6,
                 "port_speed_mbit": 1000
             }
         ],
@@ -927,8 +927,8 @@
                 "pool_dns": "139-28-219-35.pool.ovpn.com",
                 "online": true,
                 "uptime": "4 days",
-                "bandwidth_mbit": 180,
-                "bandwidth_usage": 18,
+                "bandwidth_mbit": 255,
+                "bandwidth_usage": 26,
                 "port_speed_mbit": 1000
             }
         ],
@@ -952,8 +952,8 @@
                 "pool_dns": "156-146-51-227.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 93,
-                "bandwidth_usage": 3,
+                "bandwidth_mbit": 135,
+                "bandwidth_usage": 5,
                 "port_speed_mbit": 3000
             }
         ],
@@ -977,8 +977,8 @@
                 "pool_dns": "37-120-208-35.pool.ovpn.com",
                 "online": true,
                 "uptime": "27 days",
-                "bandwidth_mbit": 70,
-                "bandwidth_usage": 7,
+                "bandwidth_mbit": 83,
+                "bandwidth_usage": 8,
                 "port_speed_mbit": 1000
             }
         ],
@@ -1012,8 +1012,8 @@
                 "pool_dns": "45-148-17-36.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 219,
-                "bandwidth_usage": 15,
+                "bandwidth_mbit": 207,
+                "bandwidth_usage": 14,
                 "port_speed_mbit": 1500
             },
             {
@@ -1022,8 +1022,8 @@
                 "pool_dns": "45-148-17-37.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 82,
-                "bandwidth_usage": 5,
+                "bandwidth_mbit": 357,
+                "bandwidth_usage": 24,
                 "port_speed_mbit": 1500
             },
             {
@@ -1032,8 +1032,8 @@
                 "pool_dns": "45-148-17-38.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 146,
-                "bandwidth_usage": 10,
+                "bandwidth_mbit": 107,
+                "bandwidth_usage": 7,
                 "port_speed_mbit": 1500
             },
             {
@@ -1042,8 +1042,8 @@
                 "pool_dns": "45-148-17-39.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 73,
-                "bandwidth_usage": 5,
+                "bandwidth_mbit": 100,
+                "bandwidth_usage": 7,
                 "port_speed_mbit": 1500
             }
         ],
@@ -1073,8 +1073,8 @@
                 "pool_dns": "217-138-204-35.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 127,
-                "bandwidth_usage": 13,
+                "bandwidth_mbit": 145,
+                "bandwidth_usage": 14,
                 "port_speed_mbit": 1000
             }
         ],
@@ -1098,8 +1098,8 @@
                 "pool_dns": "217-138-212-51.pool.ovpn.com",
                 "online": true,
                 "uptime": "11 days",
-                "bandwidth_mbit": 293,
-                "bandwidth_usage": 29,
+                "bandwidth_mbit": 339,
+                "bandwidth_usage": 34,
                 "port_speed_mbit": 1000
             }
         ],
@@ -1123,8 +1123,8 @@
                 "pool_dns": "104-245-145-244.pool.ovpn.com",
                 "online": true,
                 "uptime": "80 days",
-                "bandwidth_mbit": 182,
-                "bandwidth_usage": 6,
+                "bandwidth_mbit": 91,
+                "bandwidth_usage": 3,
                 "port_speed_mbit": 3000
             }
         ],
@@ -1148,8 +1148,8 @@
                 "pool_dns": "37-120-212-227.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 236,
-                "bandwidth_usage": 8,
+                "bandwidth_mbit": 207,
+                "bandwidth_usage": 7,
                 "port_speed_mbit": 3000
             }
         ],
@@ -1173,8 +1173,8 @@
                 "pool_dns": "138-199-59-3.pool.ovpn.com",
                 "online": true,
                 "uptime": "76 days",
-                "bandwidth_mbit": 383,
-                "bandwidth_usage": 38,
+                "bandwidth_mbit": 99,
+                "bandwidth_usage": 10,
                 "port_speed_mbit": 1000
             }
         ],
@@ -1198,8 +1198,8 @@
                 "pool_dns": "152-89-162-4.pool.ovpn.com",
                 "online": true,
                 "uptime": "54 days",
-                "bandwidth_mbit": 324,
-                "bandwidth_usage": 11,
+                "bandwidth_mbit": 460,
+                "bandwidth_usage": 15,
                 "port_speed_mbit": 3000
             }
         ],
