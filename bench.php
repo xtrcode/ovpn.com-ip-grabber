@@ -125,9 +125,9 @@ function detectPingMethod(string $pingBin): string
 
 // ── Latency measurement ───────────────────────────────────────────────────────
 
-function pingHost(string $ip, string $pingBin, string $method): array
+function pingHost(string $ip, string $pingBin, string $method, int $probes): array
 {
-    return $method === 'icmp' ? pingIcmp($ip, $pingBin) : pingTcp($ip);
+    return $method === 'icmp' ? pingIcmp($ip, $pingBin, $probes) : pingTcp($ip, 5.0, $probes);
 }
 
 function pingIcmp(string $ip, string $pingBin, int $probes = 5): array
@@ -137,8 +137,8 @@ function pingIcmp(string $ip, string $pingBin, int $probes = 5): array
 
     for ($i = 0; $i < $probes; $i++) {
         $cmd = $isWindows
-            ? sprintf('%s -n 1 -w 2000 %s 2>&1', escapeshellarg($pingBin), escapeshellarg($ip))
-            : sprintf('%s -c 1 -W 2 %s 2>&1',    escapeshellarg($pingBin), escapeshellarg($ip));
+            ? sprintf('%s -n %d -w 2000 %s 2>&1', escapeshellarg($pingBin), $probes, escapeshellarg($ip))
+            : sprintf('%s -c %d -W 2 %s 2>&1',    escapeshellarg($pingBin), $probes, escapeshellarg($ip));
 
         $out = [];
         exec($cmd, $out, $status);
@@ -170,7 +170,7 @@ function pingIcmp(string $ip, string $pingBin, int $probes = 5): array
  * A refused connection (CURLE_COULDNT_CONNECT / errno 7) still yields timing
  * data in some curl builds; a silent timeout (errno 28) skips to the next port.
  */
-function pingTcp(string $ip, float $timeout = 2.0, int $probes = 5): array
+function pingTcp(string $ip, float $timeout = 5.0, int $probes = 10): array
 {
     if (!function_exists('curl_init')) {
         fwrite(STDERR, "  ✗ cURL extension not available — cannot measure TCP latency\n");
@@ -391,6 +391,7 @@ fwrite(STDERR, "Pinging servers...\n");
 
 $total   = count($rows);
 $timeout = 0;
+const probes = 3;
 
 foreach ($rows as $i => &$row) {
     fwrite(STDERR, sprintf(
@@ -402,7 +403,8 @@ foreach ($rows as $i => &$row) {
         $row['city']
     ));
 
-    $stats = pingHost($row['ip'], $pingBin, $pingMethod);
+
+    $stats = pingHost($row['ip'], $pingBin, $pingMethod, probes);
 
     $row['ping_avg']    = $stats['avg'];
     $row['ping_median'] = $stats['median'];
@@ -417,11 +419,12 @@ foreach ($rows as $i => &$row) {
         fwrite(STDERR, " \e[33mtimeout (0/{$stats['samples']} probes)\e[0m\n");
     } else {
         fwrite(STDERR, sprintf(
-            " \e[32mavg=%.2fms  med=%.2fms  σ=%.2fms  (%d/5 probes)\e[0m\n",
+            " \e[32mavg=%.2fms  med=%.2fms  σ=%.2fms  (%d/%d probes)\e[0m\n",
             $stats['avg'],
             $stats['median'],
             $stats['stddev'],
-            $stats['samples']
+            $stats['samples'],
+            probes
         ));
     }
 }
