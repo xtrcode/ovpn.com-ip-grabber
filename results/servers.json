@@ -159,7 +159,7 @@
                 "ip": "185.236.203.98",
                 "pool_dns": "185-236-203-98.pool.ovpn.com",
                 "online": true,
-                "uptime": "143 days",
+                "uptime": "144 days",
                 "bandwidth_mbit": 0,
                 "bandwidth_usage": 0,
                 "port_speed_mbit": 3000
@@ -1135,7 +1135,7 @@
                 "ip": "37.120.212.227",
                 "pool_dns": "37-120-212-227.pool.ovpn.com",
                 "online": true,
-                "uptime": "143 days",
+                "uptime": "144 days",
                 "bandwidth_mbit": 0,
                 "bandwidth_usage": 0,
                 "port_speed_mbit": 3000
