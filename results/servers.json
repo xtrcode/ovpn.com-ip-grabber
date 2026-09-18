@@ -318,7 +318,7 @@
                 "ip": "193.187.91.196",
                 "pool_dns": "193-187-91-196.pool.ovpn.com",
                 "online": true,
-                "uptime": "143 days",
+                "uptime": "144 days",
                 "bandwidth_mbit": 0,
                 "bandwidth_usage": 0,
                 "port_speed_mbit": 3000
@@ -550,7 +550,7 @@
                 "ip": "192.145.124.3",
                 "pool_dns": "192-145-124-3.pool.ovpn.com",
                 "online": true,
-                "uptime": "143 days",
+                "uptime": "144 days",
                 "bandwidth_mbit": 0,
                 "bandwidth_usage": 0,
                 "port_speed_mbit": 1000
@@ -715,7 +715,7 @@
                 "ip": "185.157.163.17",
                 "pool_dns": "185-157-163-17.pool.ovpn.com",
                 "online": true,
-                "uptime": "147 days",
+                "uptime": "148 days",
                 "bandwidth_mbit": 0,
                 "bandwidth_usage": 0,
                 "port_speed_mbit": 1500
@@ -1160,7 +1160,7 @@
                 "ip": "138.199.59.3",
                 "pool_dns": "138-199-59-3.pool.ovpn.com",
                 "online": true,
-                "uptime": "143 days",
+                "uptime": "144 days",
                 "bandwidth_mbit": 0,
                 "bandwidth_usage": 0,
                 "port_speed_mbit": 1000
