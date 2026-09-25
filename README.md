@@ -245,7 +245,7 @@ Rank    Server   IP                City             avg(ICMP)    median       σ
 | File | Description |
 |---|---|
 | [`results/servers.json`](results/servers.json) | Full scan output |
-| [`results/meta.txt`](results/meta.txt) | Timestamp + totals of the last run |
+| [`results/meta.json`](results/meta.json) | Timestamp + totals of the last run |
 | [`results/bench.json`](results/bench.json) | Benchmark of all IPs |
 
 ## JSON structure
