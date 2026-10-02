@@ -240,6 +240,34 @@ Rank    Server   IP                City             avg(ICMP)    median       σ
 ```
 </details>
 
+3. Run peering quality analysis
+
+```bash
+php peering.php --input=results/servers.json --src-asn=47447
+```
+
+Optionally set a PeeringDB API key for IX membership lookups (free account at [peeringdb.com](https://www.peeringdb.com)):
+```bash
+export PEERINGDB_API_KEY=your_key_here
+php peering.php --input=results/servers.json --src-asn=47447 --output=results/peering.json
+```
+
+Combine with ping data from `bench.json`:
+```bash
+php peering.php --input=results/servers.json --src-asn=47447 --bench=results/bench.json --top=10
+```
+
+### Peering Score (0–100)
+
+| Signal | Points | Source |
+|---|---|---|
+| Direct BGP neighbour | +40 | RIPEstat ASN Neighbours |
+| Shared IX (any) | +25 | PeeringDB `netixlan` |
+| Shared IX is DE-CIX Frankfurt | +10 | PeeringDB |
+| Destination in PeeringDB | +10 | PeeringDB |
+| Port speed at shared IX | +15 max | PeeringDB (scaled) |
+| Same ASN | 100 (flat) | — |
+
 ## Results
 
 | File | Description |
@@ -247,6 +275,7 @@ Rank    Server   IP                City             avg(ICMP)    median       σ
 | [`results/servers.json`](results/servers.json) | Full scan output |
 | [`results/meta.json`](results/meta.json) | Timestamp + totals of the last run |
 | [`results/bench.json`](results/bench.json) | Benchmark of all IPs |
+| [`results/peering.json`](results/peering.json) | Peering quality analysis |
 
 ## JSON structure
 
